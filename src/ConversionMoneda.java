@@ -11,15 +11,8 @@ public class ConversionMoneda {
         return moneda;
     }
 
-    public void setMoneda(String moneda) {
-        this.moneda = moneda;
-    }
-
     public Map<String, Double> getConversion() {
         return conversion;
     }
 
-    public void setConversion(Map<String, Double> conversion) {
-        this.conversion = conversion;
-    }
 }
