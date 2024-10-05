@@ -17,6 +17,8 @@ public class Principal {
         boolean sw = true;
         do {
             System.out.println("*************************************************");
+            System.out.println("\tBienvenido/a al Conversor de Moneda");
+            System.out.println("*************************************************");
             System.out.println("1) Dólar estadounidense =>>> Peso Argentino");
             System.out.println("2) Peso Argentino =>>> Dólar estadounidense");
             System.out.println("3) Dólar estadounidense =>>> Boliviano boliviano");
@@ -28,8 +30,10 @@ public class Principal {
             System.out.println("9) Historial");
             System.out.println("0) Salir");
             System.out.println("*************************************************");
+            System.out.println("\tElija una opcion valida entre (0 - 9)");
+            System.out.println("*************************************************");
             int opcion = sc.nextInt();
-            String moneda, monedaConvertir, direccion = "";
+            String moneda = "", monedaConvertir = "", direccion = "";
             switch (opcion) {
                 case 1:
                     moneda = "USD";
@@ -71,18 +75,21 @@ public class Principal {
                     direccion = "https://v6.exchangerate-api.com/v6/" + clave + "/latest/" + moneda;
                     break;
                 case 9:
-                    System.out.println("historial");
+                    System.out.println("El historial es :");
                     break;
                 case 0:
                     sw = false;
+                    System.out.println("Nos vemos hasta que tengas la necesidad de convertir mas monedas.");
                     break;
 
                 default:
                     System.out.println("CASO EXTREMO");
             }
             //Mostrar la direccion de la consulta de la API
-            System.out.println(direccion);
+            //System.out.println(direccion);
             if (!direccion.isEmpty()) {
+                System.out.println("Ingrese el valor que deseas convertir:");
+                int valor = sc.nextInt();
                 try {
                     //Creando  el cliente HTTP
                     HttpClient client = HttpClient.newHttpClient();
@@ -95,18 +102,18 @@ public class Principal {
                     // Procesar la respuesta  JSON
                     Gson gson = new Gson();
                     ConversionMoneda convert = gson.fromJson(res.body(), ConversionMoneda.class);
+                    convert.ComvercionDeMoneda(valor, moneda, monedaConvertir);
                     // Mostrar resultados
-                    System.out.println("Moneda base: " + convert.getMoneda());
-                    System.out.println("Tipos de cambio:");
-                    for (Map.Entry<String, Double> entry : convert.getConversion().entrySet()) {
-                        System.out.println(entry.getKey() + ": " + entry.getValue());
-                    }
+//                    System.out.println("Moneda base: " + convert.getMoneda());
+//                    System.out.println("Tipos de cambio:");
+//                    for (Map.Entry<String, Double> entry : convert.getConversion().entrySet()) {
+//                        System.out.println(entry.getKey() + ": " + entry.getValue());
+//                    }
                 } catch (IOException | InterruptedException e) {
                     throw new RuntimeException(e);
                 }
             }
-
-        } while (sw != false);
+        } while (sw);
 
     }
 }
