@@ -33,7 +33,9 @@ public class ConexionApi {
 //              System.out.println(entry.getKey() + ": " + entry.getValue());
 //          }
 
-            historial.guardarSalida(convert.ComvercionDeMoneda(valor, moneda, monedaConvertir));
+            String salida = convert.ComvercionDeMoneda(valor, moneda, monedaConvertir);
+            historial.guardarSalida(salida);
+            System.out.println(salida);
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }

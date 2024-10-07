@@ -6,3 +6,7 @@ El valor 10006.0 [BOB] corresponde al valor  final de  =>>> 1445.87 [USD].
 El valor 1253.0 [BRL] corresponde al valor  final de  =>>> 228.55 [USD].
 	[2024-10-07 20:23:52]
 El valor 12345.0 [BOB] corresponde al valor  final de  =>>> 1783.85 [USD].
+	[2024-10-07 20:37:08]
+El valor 250.0 [USD] corresponde al valor  final de  =>>> 243707.50 [ARS].
+	[2024-10-07 20:38:34]
+El valor 250.0 [USD] corresponde al valor  final de  =>>> 243707.50 [ARS].
