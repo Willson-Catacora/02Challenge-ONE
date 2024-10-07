@@ -1,0 +1,6 @@
+El valor 12.0 [USD] corresponde al valor  final de  =>>> 11697.96 [ARS].
+
+El valor 10.0 [USD] corresponde al valor  final de  =>>> 69.19 [BOB].
+
+El valor 10.0 [BOB] corresponde al valor  final de  =>>> 1.44 [USD].
+

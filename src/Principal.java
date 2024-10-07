@@ -1,17 +1,13 @@
-import com.google.gson.Gson;
+import util.Archivo;
+import util.ConexionApi;
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.util.Map;
 import java.util.Scanner;
 
 public class Principal {
     public static void main(String[] args) {
         String clave = "e48c2696c3a0e24cad3e2fca";
         Scanner sc = new Scanner(System.in);
+        Archivo historial = new Archivo("src/recursos/Historial.txt");
 
         //Menu para la busqueda del usuario
         boolean sw = true;
@@ -31,7 +27,7 @@ public class Principal {
             System.out.println("0) Salir");
             System.out.println("*************************************************");
             System.out.println("\tElija una opcion valida entre (0 - 9)");
-            System.out.println("*************************************************");
+            System.out.println("*************************************************\n");
             int opcion = sc.nextInt();
             String moneda = "", monedaConvertir = "", direccion = "";
             switch (opcion) {
@@ -76,44 +72,23 @@ public class Principal {
                     break;
                 case 9:
                     System.out.println("El historial es :");
+                    historial.leerArchivo();
                     break;
                 case 0:
                     sw = false;
-                    System.out.println("Nos vemos hasta que tengas la necesidad de convertir mas monedas.");
+                    historial.eliminarArchivo();
                     break;
-
                 default:
-                    System.out.println("CASO EXTREMO");
+                    System.out.println("\tCODIGO NO VALIDO!!");
+                    System.out.println("Ingrese un valor valido");
             }
             //Mostrar la direccion de la consulta de la API
             //System.out.println(direccion);
             if (!direccion.isEmpty()) {
                 System.out.println("Ingrese el valor que deseas convertir:");
                 int valor = sc.nextInt();
-                try {
-                    //Creando  el cliente HTTP
-                    HttpClient client = HttpClient.newHttpClient();
-                    //Creando la solicitud (request)
-                    HttpRequest req = HttpRequest.newBuilder().uri(URI.create(direccion)).build();
-                    //Enviando la solicitud y obtener la respuesta (response)
-                    HttpResponse<String> res = client.send(req, HttpResponse.BodyHandlers.ofString());
-                    //Cuerpo de la respuesta (response)
-                    //System.out.println(res.body());
-                    // Procesar la respuesta  JSON
-                    Gson gson = new Gson();
-                    ConversionMoneda convert = gson.fromJson(res.body(), ConversionMoneda.class);
-                    convert.ComvercionDeMoneda(valor, moneda, monedaConvertir);
-                    // Mostrar resultados
-//                    System.out.println("Moneda base: " + convert.getMoneda());
-//                    System.out.println("Tipos de cambio:");
-//                    for (Map.Entry<String, Double> entry : convert.getConversion().entrySet()) {
-//                        System.out.println(entry.getKey() + ": " + entry.getValue());
-//                    }
-                } catch (IOException | InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+                ConexionApi conexion = new ConexionApi(valor, direccion, moneda, monedaConvertir, historial);
             }
         } while (sw);
-
     }
 }
