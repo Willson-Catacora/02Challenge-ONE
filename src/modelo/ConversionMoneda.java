@@ -16,7 +16,7 @@ public class ConversionMoneda {
 //      System.out.println("moneda "+ moneda);
 //      System.out.println("moneda ha convertir "+ monedaConvertir);
 //      System.out.println("valor "+ valor);
-        return "El valor " + (double) valor + " [" + moneda + "] corresponde al valor  final de  =>>> " + redondeo(valor, conversion.get(monedaConvertir)) + " [" + monedaConvertir + "].\n";
+        return "El valor " + (double) valor + " [" + moneda + "] corresponde al valor  final de  =>>> " + redondeo(valor, conversion.get(monedaConvertir)) + " [" + monedaConvertir + "].";
     }
 
     private BigDecimal redondeo(int valor1, double valor2) {

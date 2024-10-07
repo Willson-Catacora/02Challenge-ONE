@@ -1,6 +1,8 @@
-El valor 12.0 [USD] corresponde al valor  final de  =>>> 11697.96 [ARS].
-
-El valor 10.0 [USD] corresponde al valor  final de  =>>> 69.19 [BOB].
-
-El valor 10.0 [BOB] corresponde al valor  final de  =>>> 1.44 [USD].
-
+	[2024-10-07 20:23:31]
+El valor 1000.0 [USD] corresponde al valor  final de  =>>> 974830.00 [ARS].
+	[2024-10-07 20:23:36]
+El valor 10006.0 [BOB] corresponde al valor  final de  =>>> 1445.87 [USD].
+	[2024-10-07 20:23:44]
+El valor 1253.0 [BRL] corresponde al valor  final de  =>>> 228.55 [USD].
+	[2024-10-07 20:23:52]
+El valor 12345.0 [BOB] corresponde al valor  final de  =>>> 1783.85 [USD].

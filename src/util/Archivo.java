@@ -1,6 +1,8 @@
 package util;
 
 import java.io.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Archivo {
     private String rutaArchivo;
@@ -11,6 +13,14 @@ public class Archivo {
 
     public void guardarSalida(String salida){
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo, true))) {
+            // Obtener la fecha y hora actuales
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String fechaHora = now.format(formatter);
+
+            // Escribir la fecha y hora junto con el mensaje
+            writer.write("\t[" + fechaHora + "]");
+            writer.newLine(); // Agregar una nueva línea después de cada salida
             writer.write(salida);
             writer.newLine(); // Agregar una nueva línea después de cada salida
         } catch (IOException e) {
@@ -31,12 +41,12 @@ public class Archivo {
         }
     }
 
-    public void eliminarArchivo() {
-        File archivo = new File(rutaArchivo);
-        if (archivo.delete()) {
-            System.out.println("Nos vemos hasta que tengas la necesidad de convertir mas monedas.");
-        } else {
-            System.err.println("No se pudo eliminar el archivo " + rutaArchivo + ".");
-        }
-    }
+//    public void eliminarArchivo() {
+//        File archivo = new File(rutaArchivo);
+//        if (archivo.delete()) {
+//            System.out.println("Nos vemos hasta que tengas la necesidad de convertir mas monedas.");
+//        } else {
+//            System.err.println("No se pudo eliminar el archivo " + rutaArchivo + ".");
+//        }
+//    }
 }

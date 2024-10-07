@@ -23,7 +23,7 @@ public class Principal {
             System.out.println("6) Real brasileño =>>> Dólar estadounidense");
             System.out.println("7) Dólar estadounidense =>>> Peso colombiano");
             System.out.println("8) Peso colombiano =>>> Dólar estadounidense");
-            System.out.println("9) Historial");
+            System.out.println("9) Historial de Conversiones");
             System.out.println("0) Salir");
             System.out.println("*************************************************");
             System.out.println("\tElija una opcion valida entre (0 - 9)");
@@ -76,7 +76,8 @@ public class Principal {
                     break;
                 case 0:
                     sw = false;
-                    historial.eliminarArchivo();
+                    System.out.println("Nos vemos hasta que tengas la necesidad de convertir mas monedas.");
+//                    historial.eliminarArchivo();
                     break;
                 default:
                     System.out.println("\tCODIGO NO VALIDO!!");
